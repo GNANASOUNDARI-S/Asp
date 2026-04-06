@@ -34,6 +34,20 @@ py -3 app.py
 
 The app runs on `http://127.0.0.1:5000` by default.
 
+## Deploy (Vercel)
+Vercel runs this app as a Python Serverless Function. It is **ephemeral**:
+uploads and the SQLite database do not persist between requests. For production,
+use an external DB (Postgres/Atlas) and object storage.
+
+### Steps
+1. Push this repo to GitHub.
+2. Import the repo in Vercel.
+3. Set environment variables in Vercel:
+   - `SECRET_KEY` (required)
+   - `MONGO_URI` (optional, if you use MongoDB)
+   - `UPLOAD_DIR=/tmp/uploads` (default for serverless)
+4. Deploy.
+
 ## Notes
 - Update `SECRET_KEY` in `app.py` before production use.
 - The database schema is initialized automatically on app startup.
